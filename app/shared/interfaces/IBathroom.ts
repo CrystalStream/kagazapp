@@ -1,7 +1,9 @@
 interface IBathroom {
-    calle?: string;
-    numero?: string;
-    colonia?: string;
-    cp?: string;
-    estado?: string;
-  }
+  street?: string;
+  number?: string;
+  colony?: string;
+  pc?: string;
+  state?: string;
+  city?: string;
+  price?: number;
+}

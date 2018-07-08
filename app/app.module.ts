@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
 import { AuthService } from './shared/services/auth.service'
+import { CoordinatesService } from './shared/services/coordinates.service'
 import { BathroomService } from './shared/services/bathroom.service';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { BathroomService } from './shared/services/bathroom.service';
     ],
     providers: [
         AuthService,
-        BathroomService
+        BathroomService,
+        CoordinatesService
     ],
     schemas: [
         NO_ERRORS_SCHEMA

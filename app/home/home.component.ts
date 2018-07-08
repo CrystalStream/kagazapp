@@ -57,9 +57,11 @@ export class HomeComponent implements OnInit {
         const menuButtonParent = (<StackLayout>args.object).parent;
 
         switch(menuButtonParent.get("data-name")){
-            case 'find-bathroom': { 
+            case 'find-bathroom': {
+                this.navigateToMaps();
+                
                 //statements; 
-                if (geolocation.isEnabled) {
+                /*if (geolocation.isEnabled) {
                     geolocation.getCurrentLocation({ desiredAccuracy: Accuracy.high, maximumAge: 5000, timeout: 20000 })
                         .then( data => {
                             console.log(data)
@@ -67,14 +69,14 @@ export class HomeComponent implements OnInit {
                         })
                         .catch( error => {
                             console.log('Error!!!!',error)
-                        })
+                        })*/
                     // this.openMap()
-                } else {
+               /* } else {*/
                     // geolocation.enableLocationRequest()
                     //     .then(() => {
                     //         this.openMap
                     //     })
-                }
+                /*}*/
                 // alert("No se han Registrado Sanitarios reciente mente!");
                 break; 
             }

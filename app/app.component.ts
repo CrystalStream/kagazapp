@@ -8,6 +8,6 @@ import * as geolocation from "nativescript-geolocation";
 export class AppComponent { 
 
     ngOnInit() {
-        geolocation.enableLocationRequest();
+        //geolocation.enableLocationRequest();
     }
 }
