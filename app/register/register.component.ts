@@ -19,7 +19,7 @@ export class RegisterComponent {
     constructor(
         private router: RouterExtensions, 
         private page: Page,
-        private authService: AuthService    
+        private authService: AuthService
     ) {
         this.page.actionBarHidden = true;
         this.page.backgroundSpanUnderStatusBar = true;
@@ -27,7 +27,9 @@ export class RegisterComponent {
         this.page.statusBarStyle = "dark";
     }
 
-    register() {
+    register(args) {
+        const button = args.object;
+        button.isEnabled = false;
         const credentials: ICredentials = {
             displayName: this.input.displayName,
             email: this.input.email,
@@ -36,6 +38,7 @@ export class RegisterComponent {
         console.log(credentials);
         this.authService.register(credentials)
             .subscribe( (data: IAuthResponse) => {
+                button.isEnabled = true;
                 const user: IUser = {
                     displayName: data.displayName,
                     email: data.email

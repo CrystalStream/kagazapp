@@ -3,7 +3,7 @@
 		<StackLayout class="flexbox-item company-name-container">
 			<Label class="t-30 company-name" text="K'gasApp"></Label>
 		</StackLayout>
-		<Image src="res://toilet_logo" stretch="none" class="company-logo"></Image>
+		<Image src="res://icono_bano" stretch="none" class="company-logo"></Image>
 		<StackLayout class="flexbox-item">
 			<StackLayout class="form">
 				<TextField 
@@ -18,7 +18,7 @@
 					style="placeholder-color: #D5D6DB;"
 					[(ngModel)]="input.password">
 				</TextField>
-				<Button class="btn btn-login btn-rounded-sm font-weight-bold t-18" (tap)="login()" text="Log in"></Button>
+				<Button class="btn btn-login btn-rounded-sm font-weight-bold t-18" (tap)="login($event)" text="Log in"></Button>
 			</StackLayout>
 			<StackLayout orientation="vertical" horizontalAlignment="center">
 				<Button class="btn btn-register" height="40" (tap)="register()" text="Create an account"></Button>

@@ -38,7 +38,7 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 
 .action-bar {
-    background-color: #3C59FD;
+    background-color: #2771A1;
     color: #ffffff;
     padding-right: 10;
 }
@@ -51,11 +51,11 @@ refer to http://docs.nativescript.org/ui/theme.
 
 /* Login */
 .page-login-container {
-    background-color: #3C59FD;
-    android-status-bar-background: #3C59FD;
+    background-color: #2771A1;
+    android-status-bar-background: #2771A1;
 }
 .page-login {
-    background-color: #3C59FD;
+    background-color: #2771A1;
     background-repeat: no-repeat;
     background-position: right bottom;
     background-size: contain;

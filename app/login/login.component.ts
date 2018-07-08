@@ -26,7 +26,9 @@ export class LoginComponent {
         this.page.statusBarStyle = "dark";
     }
 
-    login() {
+    login(args) {
+        const button = args.object;
+        button.isEnabled = false;
         const credentials: ICredentials = {
             email: this.input.email,
             password: this.input.password
@@ -35,6 +37,7 @@ export class LoginComponent {
 
         this.authService.login(credentials)
             .subscribe( (data: IAuthResponse) => {
+                button.isEnabled = true;
                 const user: IUser = {
                     displayName: data.displayName,
                     email: data.email
@@ -53,12 +56,12 @@ export class LoginComponent {
                 console.log('data', data)
             }, (error) => {
                 console.log('error', error)
+                button.isEnabled = true;
             })
-        // this.navigateHome();   
     }
     
 
-    register() {
+    register(args) {
         console.log('something')
         this.router.navigate(["/register"], {
             clearHistory: true,

@@ -25,7 +25,7 @@
           style="placeholder-color: #D5D6DB;"
           [(ngModel)]="input.password">
         </TextField>
-        <Button class="btn btn-login btn-rounded-sm font-weight-bold t-18" (tap)="register()" text="Register"></Button>
+        <Button class="btn btn-login btn-rounded-sm font-weight-bold t-18" (tap)="register($event)" text="Register"></Button>
         <Button class="btn btn-register" height="40" (tap)="backToLogin()" text="Back to login"></Button>
       </StackLayout>
     </StackLayout>
