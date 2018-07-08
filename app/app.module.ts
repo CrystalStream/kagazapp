@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
 import { AuthService } from './shared/services/auth.service'
+import { BathroomService } from './shared/services/bathroom.service';
 
 @NgModule({
     bootstrap: [
@@ -20,7 +21,8 @@ import { AuthService } from './shared/services/auth.service'
         AppComponent
     ],
     providers: [
-        AuthService
+        AuthService,
+        BathroomService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
