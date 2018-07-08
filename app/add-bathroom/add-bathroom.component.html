@@ -1,37 +1,39 @@
+<ActionBar class="action-bar" title="Renta tu baño"></ActionBar>
+
 <GridLayout>
-    <ScrollView class="backgroundRegister">
-        <StackLayout margin="10" verticalAlignment="center">
-            <StackLayout class="form" padding="15" class="backgroundLoginForm">
-                <StackLayout class="input-field">
-                    <Label text="Calle*" class="label font-weight-bold m-b-5"></Label>
-                    <TextField class="input input-rounded" [(ngModel)]="input.calle"></TextField>
-                </StackLayout>
-                <StackLayout class="input-field">
-                    <Label text="Numero*" class="label font-weight-bold m-b-5"></Label>
-                    <TextField class="input input-rounded" [(ngModel)]="input.numero"></TextField>
-                </StackLayout>
-                <StackLayout class="input-field">
-                    <Label text="Colonia*" class="label font-weight-bold m-b-5"></Label>
-                    <TextField class="input input-rounded" [(ngModel)]="input.colonia"></TextField>
-                </StackLayout>
-                <StackLayout class="input-field">
-                    <Label text="Codigo Postal*" class="label font-weight-bold m-b-5"></Label>
-                    <TextField class="input input-rounded" [(ngModel)]="input.cp"></TextField>
-                </StackLayout>
-                <StackLayout class="input-field">
-                    <Label text="Ciudad*" class="label font-weight-bold m-b-5"></Label>
-                    <TextField class="input input-rounded" [(ngModel)]="input.ciudad"></TextField>
-                </StackLayout>
-                <StackLayout class="input-field">
-                    <Label text="Estado*" class="label font-weight-bold m-b-5"></Label>
-                    <TextField class="input input-rounded" [(ngModel)]="input.estado"></TextField>
-                </StackLayout>
-                <StackLayout class="input-field">
-                    <Label text="Precio* (pesos)" class="label font-weight-bold m-b-5"></Label>
-                    <TextField class="input input-rounded" [(ngModel)]="input.precio" keyboardType="number"></TextField>
-                </StackLayout>
-                <Button class="btn btn-primary w-full" text="Guardar" (tap)="saveBathroom($event)"></Button>
-            </StackLayout>
-        </StackLayout>
-    </ScrollView>
+	<ScrollView>
+		<StackLayout verticalAlignment="center">
+			<StackLayout class="form p-x-25">
+				<StackLayout class="m-t-15">
+					<Label text="Calle*" class="label font-weight-bold m-b-5"></Label>
+					<TextField hint="Ej: Av. San Fernando" class="input input-rounded" [(ngModel)]="input.calle"></TextField>
+				</StackLayout>
+				<StackLayout class="m-t-15">
+					<Label text="Numero*" class="label font-weight-bold m-b-5"></Label>
+					<TextField hint="Ej: 14" class="input input-rounded" [(ngModel)]="input.numero"></TextField>
+				</StackLayout>
+				<StackLayout class="m-t-15">
+					<Label text="Colonia*" class="label font-weight-bold m-b-5"></Label>
+					<TextField hint="Ej: Camino Real" class="input input-rounded" [(ngModel)]="input.colonia"></TextField>
+				</StackLayout>
+				<StackLayout class="m-t-15">
+					<Label text="Codigo Postal*" class="label font-weight-bold m-b-5"></Label>
+					<TextField hint="Ej: 28014" class="input input-rounded" [(ngModel)]="input.cp"></TextField>
+				</StackLayout>
+				<StackLayout class="m-t-15">
+					<Label text="Ciudad*" class="label font-weight-bold m-b-5"></Label>
+					<TextField hint="Ej: Colima" class="input input-rounded" [(ngModel)]="input.ciudad"></TextField>
+				</StackLayout>
+				<StackLayout class="m-t-15">
+					<Label text="Estado*" class="label font-weight-bold m-b-5"></Label>
+					<TextField hint="Ej: Colima" class="input input-rounded" [(ngModel)]="input.estado"></TextField>
+				</StackLayout>
+				<StackLayout class="m-t-15">
+					<Label text="Precio* (pesos)" class="label font-weight-bold m-b-5"></Label>
+					<TextField hint="Ej: 10" class="input input-rounded" [(ngModel)]="input.precio" [text]="input.precio | currency: 'MXN'" keyboardType="number"></TextField>
+				</StackLayout>
+				<Button class="btn btn-primary w-full" text="Guardar" (tap)="saveBathroom($event)"></Button>
+			</StackLayout>
+		</StackLayout>
+	</ScrollView>
 </GridLayout>

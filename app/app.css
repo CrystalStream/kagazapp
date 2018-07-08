@@ -43,7 +43,7 @@ refer to http://docs.nativescript.org/ui/theme.
     padding-right: 10;
 }
 .hr {
-    background-color: #3C59FD;
+    background-color: #2771A1;
     width: 95%;
     margin-top: 21;
     height: 1;
@@ -120,7 +120,7 @@ refer to http://docs.nativescript.org/ui/theme.
     border-width: 1;
     border-radius: 50%;
     font-size: 36;
-    color: #3C59FD;
+    color: #2771A1;
     background-color: #ffffff;
     border-color: #d8d8d8;
 }
@@ -156,4 +156,12 @@ refer to http://docs.nativescript.org/ui/theme.
     color: white;
     font-weight: 300;
     text-align: center;
+}
+
+.bg-blue {
+    background-color: #2771A1;
+}
+
+.blue-color {
+    color: #2771A1;
 }

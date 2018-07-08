@@ -19,7 +19,6 @@ export class AddBathroomComponent implements OnInit {
         private page: Page,
         private bathroomService: BathroomService
     ) {
-        this.page.actionBarHidden = true;
         this.input = {
             calle: "",
             numero: "",

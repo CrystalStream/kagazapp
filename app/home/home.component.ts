@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
             "cp": "",
             "estado": ""
         };
-        this.page.actionBarHidden = false;
     }
 
     ngOnInit(): void {
