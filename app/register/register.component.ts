@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NgZone } from "@angular/core";
+import { Store } from '../utils/store'
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page"
 import { AuthService } from '../shared/services/auth.service'
@@ -35,7 +35,22 @@ export class RegisterComponent {
         }
         console.log(credentials);
         this.authService.register(credentials)
-            .subscribe( data => {
+            .subscribe( (data: IAuthResponse) => {
+                const user: IUser = {
+                    displayName: data.displayName,
+                    email: data.email
+                }
+                Store.getInstance().setUser(user)
+                Store.getInstance().setToken(data.idToken)
+                this.router.navigate(["/home"], {
+                    clearHistory: true,
+                    animated: true,
+                    transition: {
+                        name: "slideLeft",
+                        duration: 300,
+                        curve: "ease"
+                    }
+                });
                 console.log('data', data)
             }, (error) => {
                 console.log('error', error)

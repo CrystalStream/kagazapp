@@ -6,6 +6,7 @@ import { StackLayout } from "ui/layouts/stack-layout";
 import { Directions } from "nativescript-directions";
 import { AuthService } from "~/shared/services/auth.service";
 import { RouterExtensions } from "nativescript-angular/router";
+import { Store } from '../utils/store'
 
 // instantiate the plugin
 let directions = new Directions();
@@ -20,7 +21,7 @@ directions.available().then(avail => {
     templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
-    public loggedUser: string;
+    public loggedUserName: string;
 
     constructor(
         private page: Page,
@@ -31,7 +32,9 @@ export class HomeComponent implements OnInit {
         this.page.actionBarHidden = false;
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.loggedUserName = Store.getInstance().getUSer().displayName
+    }
 
     logout() {
         // this.authService.logout()
