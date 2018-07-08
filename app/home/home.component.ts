@@ -84,37 +84,39 @@ export class HomeComponent implements OnInit {
     }
 
     openMap(fromLat, fromLng){
-        // directions.navigate({
-        //     from: { // optional, default 'current location'
-        //       lat: fromLat,
-        //       lng: fromLng
-        //     },
-        //     to: [{ // if an Array is passed (as in this example), the last item is the destination, the addresses in between are 'waypoints'.
-        //       address: "Venustiano Carranza 1638, Residencial Esmeralda Nte., 28010 Colima, Col.",
-        //     },
-        //     {
-        //       address: "Av. Constitución 2139, Puerta del Sol, 28017 Colima, Col."
-        //     }],
-        //     ios: {
-        //       preferGoogleMaps: true, // If the Google Maps app is installed, use that one instead of Apple Maps, because it supports waypoints. Default true.
-        //       allowGoogleMapsWeb: true // If waypoints are passed in and Google Maps is not installed, you can either open Apple Maps and the first waypoint is used as the to-address (the rest is ignored), or you can open Google Maps on web so all waypoints are shown (set this property to true). Default false.
-        //     }
-        //   }).then(() => {
-        //       console.log("Maps app launched.");
-        //   }, error => {
-        //       console.log(error);
-        //   });
-        this.zone.run(() => {
-            this.router.navigate(["maps"], {
-                clearHistory: false,
-                animated: true,
-                transition: {
-                    name: "slideLeft",
-                    duration: 350,
-                    curve: "ease"
+        directions.navigate({
+            from: { // optional, default 'current location'
+              lat: fromLat,
+              lng: fromLng
+            },
+            to: [ // if an Array is passed (as in this example), the last item is the destination, the addresses in between are 'waypoints'.
+                {
+                    address: "Venustiano Carranza 1638, Residencial Esmeralda Nte., 28010 Colima, Col.",
+                },
+                {
+                    address: "Av. Constitución, Parque Royal, 28017 Colima, Col.",
                 }
-            });
-        });
+            ],
+            ios: {
+              preferGoogleMaps: true, // If the Google Maps app is installed, use that one instead of Apple Maps, because it supports waypoints. Default true.
+              allowGoogleMapsWeb: true // If waypoints are passed in and Google Maps is not installed, you can either open Apple Maps and the first waypoint is used as the to-address (the rest is ignored), or you can open Google Maps on web so all waypoints are shown (set this property to true). Default false.
+            }
+          }).then(() => {
+              console.log("Maps app launched.");
+          }, error => {
+              console.log(error);
+          });
+        // this.zone.run(() => {
+        //     this.router.navigate(["maps"], {
+        //         clearHistory: false,
+        //         animated: true,
+        //         transition: {
+        //             name: "slideLeft",
+        //             duration: 350,
+        //             curve: "ease"
+        //         }
+        //     });
+        // });
 
     }
 
