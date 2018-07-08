@@ -7,6 +7,9 @@ import { Directions } from "nativescript-directions";
 import { AuthService } from "~/shared/services/auth.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Store } from '../utils/store'
+import * as geolocation from "nativescript-geolocation";
+import { Accuracy } from "ui/enums";
+
 
 // instantiate the plugin
 let directions = new Directions();
@@ -46,14 +49,30 @@ export class HomeComponent implements OnInit {
         const menuButtonParent = (<StackLayout>args.object).parent;
 
         switch(menuButtonParent.get("data-name")){
-            case 'news': { 
+            case 'find-bathroom': { 
                 //statements; 
-                alert("No se han Registrado Sanitarios reciente mente!");
+                if (geolocation.isEnabled) {
+                    geolocation.getCurrentLocation({ desiredAccuracy: Accuracy.high, maximumAge: 5000, timeout: 20000 })
+                        .then( data => {
+                            console.log(data)
+                            this.openMap(data.latitude, data.longitude)
+                        })
+                        .catch( error => {
+                            console.log('Error!!!!',error)
+                        })
+                    // this.openMap()
+                } else {
+                    // geolocation.enableLocationRequest()
+                    //     .then(() => {
+                    //         this.openMap
+                    //     })
+                }
+                // alert("No se han Registrado Sanitarios reciente mente!");
                 break; 
             }
             case 'home': { 
                 //statements; 
-                this.openMap();
+                // this.openMap();
                 break; 
             } 
         }
@@ -64,27 +83,39 @@ export class HomeComponent implements OnInit {
         alert("Navigate to profile page");
     }
 
-    openMap(){
-        directions.navigate({
-            from: { // optional, default 'current location'
-              lat: 52.215987,
-              lng: 5.282764
-            },
-            to: [{ // if an Array is passed (as in this example), the last item is the destination, the addresses in between are 'waypoints'.
-              address: "Hof der Kolommen 34, Amersfoort, Netherlands",
-            },
-            {
-              address: "Aak 98, Wieringerwerf, Netherlands"
-            }],
-            ios: {
-              preferGoogleMaps: true, // If the Google Maps app is installed, use that one instead of Apple Maps, because it supports waypoints. Default true.
-              allowGoogleMapsWeb: true // If waypoints are passed in and Google Maps is not installed, you can either open Apple Maps and the first waypoint is used as the to-address (the rest is ignored), or you can open Google Maps on web so all waypoints are shown (set this property to true). Default false.
-            }
-          }).then(() => {
-              console.log("Maps app launched.");
-          }, error => {
-              console.log(error);
-          });
+    openMap(fromLat, fromLng){
+        // directions.navigate({
+        //     from: { // optional, default 'current location'
+        //       lat: fromLat,
+        //       lng: fromLng
+        //     },
+        //     to: [{ // if an Array is passed (as in this example), the last item is the destination, the addresses in between are 'waypoints'.
+        //       address: "Venustiano Carranza 1638, Residencial Esmeralda Nte., 28010 Colima, Col.",
+        //     },
+        //     {
+        //       address: "Av. Constitución 2139, Puerta del Sol, 28017 Colima, Col."
+        //     }],
+        //     ios: {
+        //       preferGoogleMaps: true, // If the Google Maps app is installed, use that one instead of Apple Maps, because it supports waypoints. Default true.
+        //       allowGoogleMapsWeb: true // If waypoints are passed in and Google Maps is not installed, you can either open Apple Maps and the first waypoint is used as the to-address (the rest is ignored), or you can open Google Maps on web so all waypoints are shown (set this property to true). Default false.
+        //     }
+        //   }).then(() => {
+        //       console.log("Maps app launched.");
+        //   }, error => {
+        //       console.log(error);
+        //   });
+        this.zone.run(() => {
+            this.router.navigate(["maps"], {
+                clearHistory: false,
+                animated: true,
+                transition: {
+                    name: "slideLeft",
+                    duration: 350,
+                    curve: "ease"
+                }
+            });
+        });
+
     }
 
     private navigateToLogin() {
