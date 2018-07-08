@@ -5,16 +5,22 @@ import { Store } from '../../utils/store'
 @Injectable()
 export class BathroomService {
 
+  bathroomUrl = 'https://kgazapp.firebaseio.com/to.json';
+
   constructor(private http: HttpClient) { }
 
   register(bathroom: IBathroom) {
-    const registerUlr = 'https://kgazapp.firebaseio.com/to.json';
+    
     // Av. Constitución, Parque Royal, 28017 Colima, Col."
     const data = {
       address: `${bathroom.street}, ${bathroom.colony}, ${bathroom.pc} ${bathroom.city}, ${bathroom.state}`,
       price: bathroom.price
     }
-    return this.http.post(registerUlr, data)
+    return this.http.post(this.bathroomUrl, data)
+  }
+
+  getAll() {
+    return this.http.get(this.bathroomUrl)
   }
 
   

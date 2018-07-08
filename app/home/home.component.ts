@@ -4,12 +4,12 @@ import { EventData } from "data/observable";
 import { NgZone } from "@angular/core";
 import { StackLayout } from "ui/layouts/stack-layout";
 import { Directions } from "nativescript-directions";
-import { AuthService } from "~/shared/services/auth.service";
+import { AuthService } from "../shared/services/auth.service";
+import { BathroomService } from "../shared/services/bathroom.service";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Store } from '../utils/store'
 import * as geolocation from "nativescript-geolocation";
 import { Accuracy } from "ui/enums";
-
 
 // instantiate the plugin
 let directions = new Directions();
@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit {
         private page: Page,
         private authService: AuthService,
         private router: RouterExtensions,
-        private zone: NgZone
+        private zone: NgZone,
+        private bathroomService: BathroomService
     ) {
         this.input = {
             "calle": "",
@@ -149,7 +150,7 @@ export class HomeComponent implements OnInit {
     private navigateToAdd() {
         this.zone.run(() => {
             this.router.navigate(["add-bathroom"], {
-                clearHistory: true,
+                clearHistory: false,
                 animated: true,
                 transition: {
                     name: "slideLeft",
