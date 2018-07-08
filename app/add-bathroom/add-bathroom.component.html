@@ -19,15 +19,15 @@
                 </StackLayout>
                 <StackLayout class="input-field">
                     <Label text="Codigo Postal" class="label font-weight-bold m-b-5"></Label>
-                    <TextField secure="true" class="input" [(ngModel)]="input.cp"></TextField>
+                    <TextField class="input" [(ngModel)]="input.cp"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
                 <StackLayout class="input-field">
                     <Label text="Estado" class="label font-weight-bold m-b-5"></Label>
-                    <TextField secure="true" class="input" [(ngModel)]="input.estado"></TextField>
+                    <TextField class="input" [(ngModel)]="input.estado"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
-                <Button class="btn btn-primary w-full" text="Guardar" (tap)="guardarBaño()"></Button>
+                <Button class="btn btn-primary w-full" text="Guardar" (tap)="saveBathroom()"></Button>
             </StackLayout>
         </StackLayout>
     </ScrollView>
