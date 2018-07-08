@@ -1,10 +1,6 @@
-import { Component, ElementRef, OnInit } from "@angular/core";
-import { Button } from "ui/button";
-import { Kinvey, User } from 'kinvey-nativescript-sdk';
+import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page"
-import { EventData } from "data/observable";
-import { StackLayout } from "ui/layouts/stack-layout";
 import { BathroomService } from "~/shared/services/bathroom.service";
 
 
@@ -27,24 +23,21 @@ export class AddBathroomComponent implements OnInit {
             numero: "",
             colonia: "",
             cp: "",
-            estado: ""
+            estado: "",
+            ciudad: ""
         };
     }
 
-    ngOnInit(): void {
-        Kinvey.User.me()
-            .then((user: User) => {
-                this.loggedUser = user.data['_socialIdentity'].kinveyAuth.id
-            });
-    }
+    ngOnInit(): void {}
 
     saveBathroom(){
         const bathroomAddress: IBathroom = {
-            calle: this.input.calle,
-            numero: this.input.numero,
-            colonia: this.input.colonia,
-            cp: this.input.cp,
-            estado: this.input.estado
+            street: this.input.calle,
+            number: this.input.numero,
+            colony: this.input.colonia,
+            pc: this.input.cp,
+            state: this.input.estado,
+            city: this.input.ciudad
         }
         console.log(bathroomAddress);
         this.bathroomService.register(bathroomAddress)

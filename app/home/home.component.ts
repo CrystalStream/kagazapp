@@ -152,7 +152,7 @@ export class HomeComponent implements OnInit {
                 clearHistory: true,
                 animated: true,
                 transition: {
-                    name: "slideTop",
+                    name: "slideLeft",
                     duration: 350,
                     curve: "ease"
                 }
