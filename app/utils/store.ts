@@ -11,6 +11,10 @@ export class Store {
     Store._instance = this;
   }
 
+  public clear() {
+    appSettings.clear()
+  }
+
   public static getInstance(): Store {
     return Store._instance;
   }
