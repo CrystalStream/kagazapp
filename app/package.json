@@ -1,0 +1,16 @@
+{
+  "android": {
+    "v8Flags": "--expose_gc"
+  },
+  "main": "main.js",
+  "name": "tns-template-enterprise-auth-ng",
+  "pluginsData": {
+    "kinvey-nativescript-sdk": {
+      "config": {
+        "appKey": "",
+        "appSecret": ""
+      }
+    }
+  },
+  "version": "0.2.0"
+}
