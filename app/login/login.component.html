@@ -1,13 +1,28 @@
-<FlexboxLayout class="page page-login" backgroundImage="res://mesh">
-    <StackLayout class="flexbox-item company-name-container">
-        <Label class="t-30 company-name" text="K'gasApp"></Label>
-    </StackLayout>
-    <Image src="res://toilet_logo" stretch="none" class="company-logo"></Image>
-    <StackLayout class="flexbox-item">
-        <StackLayout class="form">
-            <TextField hint="Username" class="input input-rounded m-t-20" style="placeholder-color: #D5D6DB;"></TextField>
-            <TextField hint="Password" class="input input-rounded m-t-10" style="placeholder-color: #D5D6DB;"></TextField>
-        </StackLayout>
-        <Button class="btn btn-login btn-rounded-sm font-weight-bold t-18" (tap)="login()" text="Log in"></Button>        
-    </StackLayout>
-</FlexboxLayout>
+<ScrollView>
+	<FlexboxLayout class="page page-login" backgroundImage="res://mesh">
+		<StackLayout class="flexbox-item company-name-container">
+			<Label class="t-30 company-name" text="K'gasApp"></Label>
+		</StackLayout>
+		<Image src="res://toilet_logo" stretch="none" class="company-logo"></Image>
+		<StackLayout class="flexbox-item">
+			<StackLayout class="form">
+				<TextField 
+					hint="Email" 
+					class="input input-rounded m-t-20" 
+					style="placeholder-color: #D5D6DB;"
+					[(ngModel)]="input.email"></TextField>
+				<TextField 
+					hint="Password" 
+					secure="true"
+					class="input input-rounded m-t-10" 
+					style="placeholder-color: #D5D6DB;"
+					[(ngModel)]="input.password">
+				</TextField>
+				<Button class="btn btn-login btn-rounded-sm font-weight-bold t-18" (tap)="login()" text="Log in"></Button>
+			</StackLayout>
+			<StackLayout orientation="vertical" horizontalAlignment="center">
+				<Button class="btn btn-register" height="40" (tap)="register()" text="Create an account"></Button>
+			</StackLayout>
+		</StackLayout>
+	</FlexboxLayout>
+</ScrollView>

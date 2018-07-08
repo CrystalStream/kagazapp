@@ -68,6 +68,7 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 .company-name{
     margin-top: 60;
+    font-family: 'Raleway', sans-serif;
 }
 
 .company-logo {
@@ -89,14 +90,18 @@ refer to http://docs.nativescript.org/ui/theme.
     color: #000000;
 }
 
+.btn-register {
+    color: #FDCF3C;
+    background-color: transparent;
+    border: 0;
+    text-decoration: underline;
+}
+
 /*  Welcome */
 
 .title {
     color: #3C59FD;
     margin-top: 20;
-}
-.flexbox-item Label {
-    margin-bottom: 4;
 }
 
 .menu-container {
@@ -122,4 +127,17 @@ refer to http://docs.nativescript.org/ui/theme.
 
 .action-button{
     font-size: 20;
+}
+
+.link {
+    background: transparent;
+    border: 0 !important;
+}
+
+.no-border {
+    border: 0;
+}
+
+.app-btn {
+    padding: 10;
 }

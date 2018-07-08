@@ -5,14 +5,15 @@ import { Page } from "tns-core-modules/ui/page"
 import { AuthService } from '../shared/services/auth.service'
 
 @Component({
-    selector: "Login",
+    selector: "Register",
     moduleId: module.id,
-    templateUrl: "./login.component.html"
+    templateUrl: "./register.component.html"
 })
-export class LoginComponent {
+export class RegisterComponent {
     input = {
-        email: '',
-        password: ''
+      displayName: '',
+      email: '',
+      password: ''
     }
 
     constructor(
@@ -26,14 +27,14 @@ export class LoginComponent {
         this.page.statusBarStyle = "dark";
     }
 
-    login() {
+    register() {
         const credentials: ICredentials = {
+            displayName: this.input.displayName,
             email: this.input.email,
             password: this.input.password
         }
         console.log(credentials);
-
-        this.authService.login(credentials)
+        this.authService.register(credentials)
             .subscribe( data => {
                 console.log('data', data)
             }, (error) => {
@@ -41,18 +42,17 @@ export class LoginComponent {
             })
         // this.navigateHome();   
     }
-    
 
-    register() {
-        console.log('something')
-        this.router.navigate(["/register"], {
-            clearHistory: true,
-            animated: true,
-            transition: {
-                name: "slideLeft",
-                duration: 300,
-                curve: "ease"
-            }
-        });
+    backToLogin() {
+      this.router.navigate(["/login"], {
+        clearHistory: true,
+        animated: true,
+        transition: {
+            name: "slideRight",
+            duration: 300,
+            curve: "ease"
+        }
+    });
     }
+
 }

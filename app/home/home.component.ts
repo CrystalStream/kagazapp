@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnInit } from "@angular/core";
-import { Button } from "ui/button";
-import { Kinvey, User } from 'kinvey-nativescript-sdk';
-import { RouterExtensions } from "nativescript-angular/router";
+import { Component, OnInit } from "@angular/core";
 import { Page } from "tns-core-modules/ui/page"
 import { EventData } from "data/observable";
+import { NgZone } from "@angular/core";
 import { StackLayout } from "ui/layouts/stack-layout";
 import { Directions } from "nativescript-directions";
+import { AuthService } from "~/shared/services/auth.service";
+import { RouterExtensions } from "nativescript-angular/router";
 
 // instantiate the plugin
 let directions = new Directions();
@@ -22,31 +22,20 @@ directions.available().then(avail => {
 export class HomeComponent implements OnInit {
     public loggedUser: string;
 
-    constructor(private _routerExtensions: RouterExtensions, private page: Page) {
+    constructor(
+        private page: Page,
+        private authService: AuthService,
+        private router: RouterExtensions,
+        private zone: NgZone
+    ) {
         this.page.actionBarHidden = false;
     }
 
-    ngOnInit(): void {
-        Kinvey.User.me()
-            .then((user: User) => {
-                this.loggedUser = user.data['_socialIdentity'].kinveyAuth.id
-            });
-    }
+    ngOnInit(): void {}
 
     logout() {
-        Kinvey.User.logout()
-            .then(() => {
-                this._routerExtensions.navigate(["login"],
-                    {
-                        clearHistory: true,
-                        animated: true,
-                        transition: {
-                            name: "slideBottom",
-                            duration: 350,
-                            curve: "ease"
-                        }
-                    });
-            });
+        // this.authService.logout()
+        this.navigateToLogin()
     }
 
     onMenuButtonTap(args: EventData) {
@@ -93,5 +82,19 @@ export class HomeComponent implements OnInit {
           }, error => {
               console.log(error);
           });
+    }
+
+    private navigateToLogin() {
+        this.zone.run(() => {
+            this.router.navigate(["login"], {
+                clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideTop",
+                    duration: 350,
+                    curve: "ease"
+                }
+            });
+        });
     }
 }

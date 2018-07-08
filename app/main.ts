@@ -8,6 +8,6 @@ import { AppModule } from "./app.module";
 * for use. Check out the initialization script at /shared/kinvey.common.ts
 * along with more information about it.
 *************************************************************/
-import "./shared/kinvey.common";
+// import "./shared/kinvey.common";
 
 platformNativeScriptDynamic({ startPageActionBarHidden: true }).bootstrapModule(AppModule);

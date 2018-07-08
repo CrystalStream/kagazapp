@@ -1,12 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
-import { LoggedInLazyLoadGuard } from "./logged-in-lazy-load.guard";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" },
+    { path: "", redirectTo: "/login", pathMatch: "full" },
     { path: "login", loadChildren: "./login/login.module#LoginModule" },
-    { path: "home", loadChildren: "./home/home.module#HomeModule", canLoad: [LoggedInLazyLoadGuard] }
+    { path: "register", loadChildren: "./register/register.module#RegisterModule" },
+    { path: "home", loadChildren: "./home/home.module#HomeModule" }
 ];
 
 @NgModule({
