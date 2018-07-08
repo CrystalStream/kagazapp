@@ -22,6 +22,7 @@ directions.available().then(avail => {
 })
 export class HomeComponent implements OnInit {
     public loggedUserName: string;
+    input: any;
 
     constructor(
         private page: Page,
@@ -29,6 +30,13 @@ export class HomeComponent implements OnInit {
         private router: RouterExtensions,
         private zone: NgZone
     ) {
+        this.input = {
+            "calle": "",
+            "numero": "",
+            "colonia": "",
+            "cp": "",
+            "estado": ""
+        };
         this.page.actionBarHidden = false;
     }
 
@@ -56,6 +64,10 @@ export class HomeComponent implements OnInit {
                 this.openMap();
                 break; 
             } 
+            case 'renta': {
+                this.navigateToAdd();
+                break;
+            }
         }
     }
 
@@ -90,6 +102,20 @@ export class HomeComponent implements OnInit {
     private navigateToLogin() {
         this.zone.run(() => {
             this.router.navigate(["login"], {
+                clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideTop",
+                    duration: 350,
+                    curve: "ease"
+                }
+            });
+        });
+    }
+
+    private navigateToAdd() {
+        this.zone.run(() => {
+            this.router.navigate(["add-bathroom"], {
                 clearHistory: true,
                 animated: true,
                 transition: {
