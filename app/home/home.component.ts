@@ -60,8 +60,9 @@ export class HomeComponent implements OnInit {
                 break; 
             }
             case 'home': { 
+                this.navigateToMaps();
                 //statements; 
-                this.openMap();
+                //this.openMap();
                 break; 
             } 
             case 'renta': {
@@ -117,6 +118,20 @@ export class HomeComponent implements OnInit {
         this.zone.run(() => {
             this.router.navigate(["add-bathroom"], {
                 clearHistory: true,
+                animated: true,
+                transition: {
+                    name: "slideTop",
+                    duration: 350,
+                    curve: "ease"
+                }
+            });
+        });
+    }
+
+    private navigateToMaps() {
+        this.zone.run(() => {
+            this.router.navigate(["maps"], {
+                clearHistory: false,
                 animated: true,
                 transition: {
                     name: "slideTop",
