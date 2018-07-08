@@ -3,30 +3,34 @@
         <StackLayout margin="10" verticalAlignment="center">
             <StackLayout class="form" padding="15" class="backgroundLoginForm">
                 <StackLayout class="input-field">
-                    <Label text="Calle" class="label font-weight-bold m-b-5"></Label>
+                    <Label text="Calle*" class="label font-weight-bold m-b-5"></Label>
                     <TextField class="input input-rounded" [(ngModel)]="input.calle"></TextField>
                 </StackLayout>
                 <StackLayout class="input-field">
-                    <Label text="Numero" class="label font-weight-bold m-b-5"></Label>
+                    <Label text="Numero*" class="label font-weight-bold m-b-5"></Label>
                     <TextField class="input input-rounded" [(ngModel)]="input.numero"></TextField>
                 </StackLayout>
                 <StackLayout class="input-field">
-                    <Label text="Colonia" class="label font-weight-bold m-b-5"></Label>
+                    <Label text="Colonia*" class="label font-weight-bold m-b-5"></Label>
                     <TextField class="input input-rounded" [(ngModel)]="input.colonia"></TextField>
                 </StackLayout>
                 <StackLayout class="input-field">
-                    <Label text="Codigo Postal" class="label font-weight-bold m-b-5"></Label>
+                    <Label text="Codigo Postal*" class="label font-weight-bold m-b-5"></Label>
                     <TextField class="input input-rounded" [(ngModel)]="input.cp"></TextField>
                 </StackLayout>
                 <StackLayout class="input-field">
-                    <Label text="Ciudad" class="label font-weight-bold m-b-5"></Label>
+                    <Label text="Ciudad*" class="label font-weight-bold m-b-5"></Label>
                     <TextField class="input input-rounded" [(ngModel)]="input.ciudad"></TextField>
                 </StackLayout>
                 <StackLayout class="input-field">
-                    <Label text="Estado" class="label font-weight-bold m-b-5"></Label>
+                    <Label text="Estado*" class="label font-weight-bold m-b-5"></Label>
                     <TextField class="input input-rounded" [(ngModel)]="input.estado"></TextField>
                 </StackLayout>
-                <Button class="btn btn-primary w-full" text="Guardar" (tap)="saveBathroom()"></Button>
+                <StackLayout class="input-field">
+                    <Label text="Precio* (pesos)" class="label font-weight-bold m-b-5"></Label>
+                    <TextField class="input input-rounded" [(ngModel)]="input.precio" keyboardType="number"></TextField>
+                </StackLayout>
+                <Button class="btn btn-primary w-full" text="Guardar" (tap)="saveBathroom($event)"></Button>
             </StackLayout>
         </StackLayout>
     </ScrollView>

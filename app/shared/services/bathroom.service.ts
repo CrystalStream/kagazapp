@@ -7,11 +7,12 @@ export class BathroomService {
 
   constructor(private http: HttpClient) { }
 
-  register(bathroomAddress: IBathroom) {
+  register(bathroom: IBathroom) {
     const registerUlr = 'https://kgazapp.firebaseio.com/to.json';
     // Av. Constitución, Parque Royal, 28017 Colima, Col."
     const data = {
-      address: `${bathroomAddress.street}, ${bathroomAddress.colony}, ${bathroomAddress.pc} ${bathroomAddress.city}, ${bathroomAddress.state}`
+      address: `${bathroom.street}, ${bathroom.colony}, ${bathroom.pc} ${bathroom.city}, ${bathroom.state}`,
+      price: bathroom.price
     }
     return this.http.post(registerUlr, data)
   }

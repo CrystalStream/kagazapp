@@ -5,4 +5,5 @@ interface IBathroom {
     pc?: string;
     state?: string;
     city?: string;
+    price?: number;
   }
