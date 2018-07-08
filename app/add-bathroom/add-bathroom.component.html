@@ -30,7 +30,7 @@
 				</StackLayout>
 				<StackLayout class="m-t-15">
 					<Label text="Precio* (pesos)" class="label font-weight-bold m-b-5"></Label>
-					<TextField hint="Ej: 10" class="input input-rounded" [(ngModel)]="input.precio" [text]="input.precio | currency: 'MXN'" keyboardType="number"></TextField>
+					<TextField hint="Ej: 10" class="input input-rounded" [(ngModel)]="input.precio" keyboardType="number"></TextField>
 				</StackLayout>
 				<Button class="btn btn-primary w-full" text="Guardar" (tap)="saveBathroom($event)"></Button>
 			</StackLayout>
