@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 
 import { AuthService } from './shared/services/auth.service'
 import { BathroomService } from './shared/services/bathroom.service';
+import { AuthenticationGuard } from "./shared/guards/AuthenticationGuard";
 
 @NgModule({
     bootstrap: [
@@ -22,7 +23,8 @@ import { BathroomService } from './shared/services/bathroom.service';
     ],
     providers: [
         AuthService,
-        BathroomService
+        BathroomService,
+        AuthenticationGuard
     ],
     schemas: [
         NO_ERRORS_SCHEMA

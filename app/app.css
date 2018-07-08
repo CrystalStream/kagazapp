@@ -68,7 +68,7 @@ refer to http://docs.nativescript.org/ui/theme.
 }
 .company-name{
     margin-top: 60;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Chicle', sans-serif;
 }
 
 .company-logo {
@@ -140,4 +140,20 @@ refer to http://docs.nativescript.org/ui/theme.
 
 .app-btn {
     padding: 10;
+}
+
+.space-around-letter {
+    letter-spacing: .5
+}
+
+.bg-green {
+    background-color: #21AE9A;
+    color: white;
+}
+
+.error-container {
+    background-color: rgba(174, 61, 59, 0.7);
+    color: white;
+    font-weight: 300;
+    text-align: center;
 }

@@ -3,6 +3,8 @@ import { Store } from '../utils/store'
 import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page"
 import { AuthService } from '../shared/services/auth.service'
+import { parseError } from '../utils/parseError'
+
 
 @Component({
     selector: "Register",
@@ -16,6 +18,8 @@ export class RegisterComponent {
       password: ''
     }
 
+    error: IError;
+
     constructor(
         private router: RouterExtensions, 
         private page: Page,
@@ -28,6 +32,7 @@ export class RegisterComponent {
     }
 
     register(args) {
+        console.log('clicked');
         const button = args.object;
         button.isEnabled = false;
         const credentials: ICredentials = {
@@ -56,9 +61,10 @@ export class RegisterComponent {
                 });
                 console.log('data', data)
             }, (error) => {
+                button.isEnabled = false;
+                error = parseError(error)
                 console.log('error', error)
-            })
-        // this.navigateHome();   
+            })   
     }
 
     backToLogin() {

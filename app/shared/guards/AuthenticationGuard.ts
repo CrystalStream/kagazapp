@@ -10,7 +10,7 @@ export class AuthenticationGuard implements CanActivate {
     private router: RouterExtensions) { }
 
     canActivate(): boolean {
-        if (!appSettings.get('token')) {
+        if (!appSettings.getString('token')) {
             this.router.navigate(["login"], { clearHistory: true });
         }
 

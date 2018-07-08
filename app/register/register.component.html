@@ -1,10 +1,13 @@
 <ScrollView>
   <FlexboxLayout class="page page-login" backgroundImage="res://mesh">
     <StackLayout class="flexbox-item company-name-container">
-      <Label class="t-30 company-name" text="K'gasApp"></Label>
+      <Label class="t-30 company-name space-around-letter m-b-10" text="K'gas App"></Label>
     </StackLayout>
-    <Image src="res://icono_bano" stretch="none" class="company-logo"></Image>
-    <StackLayout class="flexbox-item">
+    <Image src="res://icono_bano" stretch="none" class="company-logo m-t-20"></Image>
+    <StackLayout class="error-container m-t-30 p-y-5 p-x-20" width="50%" *ngIf="error">
+				<Label [text]="error.message" textWrap="true"></Label>
+		</StackLayout>
+    <StackLayout class="flexbox-item m-y-10">
       <StackLayout class="form">
         <TextField 
           hint="Nombre" 
@@ -21,12 +24,14 @@
         <TextField 
           hint="Password"
           secure="true"
-          class="input input-rounded m-t-10" 
+          class="input input-rounded m-t-20" 
           style="placeholder-color: #D5D6DB;"
           [(ngModel)]="input.password">
         </TextField>
-        <Button class="btn btn-login btn-rounded-sm font-weight-bold t-18" (tap)="register($event)" text="Register"></Button>
-        <Button class="btn btn-register" height="40" (tap)="backToLogin()" text="Back to login"></Button>
+        <Button class="btn btn-login btn-rounded-sm font-weight-bold t-18 m-t-30 bg-green" width="70%" (tap)="register($event)" text="Register"></Button>
+        <StackLayout orientation="vertical" horizontalAlignment="center">
+            <Button class="btn btn-register" height="40" (tap)="backToLogin()" text="Back to login"></Button>
+          </StackLayout>
       </StackLayout>
     </StackLayout>
   </FlexboxLayout>

@@ -3,6 +3,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { Page } from "tns-core-modules/ui/page"
 import { AuthService } from '../shared/services/auth.service'
 import { Store } from '../utils/store'
+import { parseError } from '../utils/parseError'
 
 @Component({
     selector: "Login",
@@ -14,6 +15,8 @@ export class LoginComponent {
         email: '',
         password: ''
     }
+
+    error: IError;
 
     constructor(
         private router: RouterExtensions, 
@@ -29,6 +32,7 @@ export class LoginComponent {
     login(args) {
         const button = args.object;
         button.isEnabled = false;
+        this.error = null;
         const credentials: ICredentials = {
             email: this.input.email,
             password: this.input.password
@@ -55,7 +59,8 @@ export class LoginComponent {
                 });
                 console.log('data', data)
             }, (error) => {
-                console.log('error', error)
+                this.error = parseError(error);
+                console.log(this.error)
                 button.isEnabled = true;
             })
     }
